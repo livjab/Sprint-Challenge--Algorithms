@@ -102,88 +102,88 @@ class SortingRobot:
         # allow the robot to reduce movements until it reaches the end of the list.
 
         # Start by moving to the far right side of the list
-        while robot.can_move_right():
-            robot.move_right()
+        while self.can_move_right():
+            self.move_right()
 
         # Swapping "none" item with item in front of robot. "none" item will be our placeholder for sorted vs non sorted
-        robot.swap_item()
+        self.swap_item()
 
         # Move all the way back to the left to begin comparrisons.
-        while robot.can_move_left():
-            robot.move_left()
+        while self.can_move_left():
+            self.move_left()
 
         # Continue the below pattern until robot has reached the right side
-        while robot.can_move_right():
+        while self.can_move_right():
             # compare item in hand with item in front of robot
 
             # If item in front of robot is none, we have reached the part of the list that is sorted to its right
-            if robot.compare_item() == None:
-                robot.swap_item() # this puts highest item in place of "none"
-                if robot.can_move_left():
+            if self.compare_item() == None:
+                self.swap_item() # this puts highest item in place of "none"
+                if self.can_move_left():
                     # move "none" item one to the left. Now everything to its right is sorted.
-                    robot.move_left()
-                    robot.swap_item()
+                    self.move_left()
+                    self.swap_item()
                     # Move all the way back to the left
-                    while robot.can_move_left():
-                        robot.move_left()
+                    while self.can_move_left():
+                        self.move_left()
 
                 else: # if robot is already at the far left, list should be sorted and we can end this while loop by moveing to far right
-                    while robot.can_move_right():
-                        robot.move_right()
+                    while self.can_move_right():
+                        self.move_right()
 
             # If item in hand is lower, swap items, then move one space to right
-            elif robot.compare_item() == -1:
-                robot.swap_item()
-                robot.move_right()
+            elif self.compare_item() == -1:
+                self.swap_item()
+                self.move_right()
 
             # If item in hand is higher, keep it and move one space to the right
-            elif robot.compare_item() == 1:
-                robot.move_right()
+            elif self.compare_item() == 1:
+                self.move_right()
 
             # If items are equal, keep and move one space to right.
-            elif robot.compare_item() == 0:
-                robot.move_right()
+            elif self.compare_item() == 0:
+                self.move_right()
 
        # If we have reached far right side, the while loop will stop
        # We need to sawp item and then move all the way back to the left and restart while loop.
-        if robot.can_move_right() == False:
-            robot.swap_item()
-            robot.move_left()
-            robot.swap_item()
-            while robot.can_move_left():
-                robot.move_left()
+        if self.can_move_right() == False:
+            self.swap_item()
+            self.move_left()
+            self.swap_item()
+            while self.can_move_left():
+                self.move_left()
 
        # Restarting while loop
-        while robot.can_move_right():
+        while self.can_move_right():
             # compare item in hand with item in front of robot
 
             # If item in front of robot is none, we have reached the part of the list that is sorted to its right
-            if robot.compare_item() == None:
-                robot.swap_item() # this puts highest item in place of "none"
-                if robot.can_move_left():
+            if self.compare_item() == None:
+                self.swap_item() # this puts highest item in place of "none"
+                if self.can_move_left():
                     # move "none" item one to the left. Now everything to its right is sorted.
-                    robot.move_left()
-                    robot.swap_item()
+                    self.move_left()
+                    self.swap_item()
                     # Move all the way back to the left
-                    while robot.can_move_left():
-                        robot.move_left()
+                    while self.can_move_left():
+                        self.move_left()
 
                 else: # if robot is already at the far left, list should be sorted and we can end this while loop by moveing to far right
-                    while robot.can_move_right():
-                        robot.move_right()
+                    while self.can_move_right():
+                        self.move_right()
 
             # If item in hand is lower, swap items, then move one space to right
-            elif robot.compare_item() == -1:
-                robot.swap_item()
-                robot.move_right()
+            elif self.compare_item() == -1:
+                self.swap_item()
+                self.move_right()
 
             # If item in hand is higher, keep it and move one space to the right
-            elif robot.compare_item() == 1:
-                robot.move_right()
+            elif self.compare_item() == 1:
+                self.move_right()
 
             # If items are equal, keep and move one space to right.
-            elif robot.compare_item() == 0:
-                robot.move_right()
+            elif self.compare_item() == 0:
+                self.move_right()
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
